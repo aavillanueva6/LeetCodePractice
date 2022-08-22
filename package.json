@@ -1,0 +1,20 @@
+{
+  "name": "leetcodepractice",
+  "version": "1.0.0",
+  "description": "A repository that I will use to save my work on LeetCode algorithms",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aavillanueva6/LeetCodePractice.git"
+  },
+  "keywords": [],
+  "author": "Alejandro Villanueva",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aavillanueva6/LeetCodePractice/issues"
+  },
+  "homepage": "https://github.com/aavillanueva6/LeetCodePractice#readme"
+}
