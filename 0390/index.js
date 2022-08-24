@@ -10,7 +10,6 @@ var lastRemaining = function (n) {
     arr.push(i);
   }
   function eliminate(arr) {
-    console.log('eliminate: ', arr);
     if (arr.length === 1) return arr[0];
     if (round % 2 !== 0) {
       return oddRound(arr);
@@ -27,12 +26,27 @@ var lastRemaining = function (n) {
     return eliminate(newArr);
   }
   function evenRound(arr) {
+    if (arr.length % 2 === 0) {
+      return evenRoundEvenLength(arr);
+    } else {
+      return evenRoundOddLength(arr);
+    }
+  }
+  function evenRoundEvenLength(arr) {
     let newArr = [];
-    for (let i = arr.length - 1; i >= 0; i -= 2) {
-      arr.splice(i, 1);
+    for (let i = 0; i < arr.length; i += 2) {
+      newArr.push(arr[i]);
     }
     round++;
-    return eliminate(arr);
+    return eliminate(newArr);
+  }
+  function evenRoundOddLength(arr) {
+    let newArr = [];
+    for (let i = 1; i < arr.length; i += 2) {
+      newArr.push(arr[i]);
+    }
+    round++;
+    return eliminate(newArr);
   }
   return eliminate(arr);
 };
@@ -41,6 +55,6 @@ var lastRemaining = function (n) {
 // console.log(lastRemaining(1)); //1
 // console.log(lastRemaining(2)); //2
 
-console.log(lastRemaining(100000));
+console.log(lastRemaining(1000000));
 
-// console.log(lastRemaining(10000000)); // works but runtime is too long.  Need to figure out how to speed up the evenRound and oddRound functions
+console.log(lastRemaining(100000000)); // runtime has been fixed, but now having memory allocation issues
