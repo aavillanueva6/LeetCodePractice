@@ -16,9 +16,6 @@ var isIsomorphic = function (s, t) {
     }
   }
   return true;
-  console.log(Number(sArr.join('')));
-  console.log(Number(tArr.join('')));
-  return Number(sArr.join('')) === Number(tArr.join('')) ? true : false;
 };
 console.log(isIsomorphic('egg', 'add')); //true
 console.log(isIsomorphic('foo', 'bar')); //false
