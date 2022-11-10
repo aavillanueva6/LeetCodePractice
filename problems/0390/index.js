@@ -10,7 +10,6 @@ var lastRemaining = function (n) {
     arr.push(i);
   }
   function eliminate(arr) {
-    if (arr.length === 1) return arr[0];
     if (round % 2 !== 0) {
       return oddRound(arr);
     } else {
@@ -23,7 +22,7 @@ var lastRemaining = function (n) {
       newArr.push(arr[i]);
     }
     round++;
-    return eliminate(newArr);
+    return newArr;
   }
   function evenRound(arr) {
     if (arr.length % 2 === 0) {
@@ -38,7 +37,7 @@ var lastRemaining = function (n) {
       newArr.push(arr[i]);
     }
     round++;
-    return eliminate(newArr);
+    return newArr;
   }
   function evenRoundOddLength(arr) {
     let newArr = [];
@@ -46,15 +45,18 @@ var lastRemaining = function (n) {
       newArr.push(arr[i]);
     }
     round++;
-    return eliminate(newArr);
+    return newArr;
   }
-  return eliminate(arr);
+  while (arr.length > 1) {
+    arr = eliminate(arr);
+  }
+  return arr[0];
 };
 
 // console.log(lastRemaining(9)); //6
 // console.log(lastRemaining(1)); //1
 // console.log(lastRemaining(2)); //2
 
-console.log(lastRemaining(1000000));
+// console.log(lastRemaining(1000000));
 
-console.log(lastRemaining(100000000)); // runtime has been fixed, but now having memory allocation issues
+console.log(lastRemaining(100000000)); // this is the one causing it to crash on leetcode
