@@ -15,9 +15,6 @@ var getDecimalValue = function (head) {
     binNum += head.val;
     head = head.next;
   }
-  for (let i = 0; i < head.length; i++) {
-    binNum += head[i].toString();
-  }
   return parseInt(binNum, 2);
 };
 
