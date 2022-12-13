@@ -3,6 +3,16 @@
  * @return {number}
  */
 var maxProfit = function (prices) {
+  // faster O(n) TC solution.  125 ms
+  let minPrice = 100000; // constraints list 10000 as max possible price.  Initialized variable at value beyond constraints
+  let max = 0;
+  for (let i = 0; i < prices.length; i++) {
+    if (prices[i] < minPrice) minPrice = prices[i];
+    else if (prices[i] - minPrice > max) max = prices[i] - minPrice;
+  }
+  return max;
+  /*
+  // original O(n^2) TC.  7487 ms
   let max = 0;
   let lastI = -2;
   for (let i = 0; i < prices.length - 1; i++) {
@@ -20,6 +30,7 @@ var maxProfit = function (prices) {
     }
   }
   return max;
+  */
 };
 
 console.log(maxProfit([7, 1, 5, 3, 6, 4])); //5
