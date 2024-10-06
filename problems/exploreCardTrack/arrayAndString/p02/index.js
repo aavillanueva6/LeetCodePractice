@@ -13,6 +13,22 @@
  * @return {number}
  */
 var dominantIndex = function (nums) {
+  // refactor to improve runtime and memory usage
+  let largest = [0, 0];
+  let second = 0;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] > largest[0]) {
+      second = largest[0];
+      largest[0] = nums[i];
+      largest[1] = i;
+    } else if (nums[i] > second) {
+      second = nums[i];
+    }
+  }
+  return largest[0] / second >= 2 ? largest[1] : -1;
+
+  /*
+  // initial solution
   let largest = [0, 0];
   let second = [0, 0];
   for (let i = 0; i < nums.length; i++) {
@@ -25,6 +41,7 @@ var dominantIndex = function (nums) {
     }
   }
   return largest[0] / second[0] >= 2 ? largest[1] : -1;
+  */
 };
 
 console.log(dominantIndex([3, 6, 1, 0])); //1
